@@ -6,7 +6,7 @@ Kyle Bulloch
 
 Drupal Module made for Epicodus Advanced Drupal Assessment
 
-###Desctription
+###Description
 
 This module takes a user input of a DNA helix in the form GATTACA and returns the second half of the helix in the form CTAATGT.
 
