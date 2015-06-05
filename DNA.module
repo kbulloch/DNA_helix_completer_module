@@ -1,5 +1,23 @@
 <?php
 
+function DNA_menu() {
+    $items = array();
+    $items['DNA'] = array(
+        'title' => 'DNA Helix Completer',
+        'page callback' => 'drupal_get_form',
+        'page arguments' => array('DNA_form'),
+        'access callback' => TRUE,
+        'type' => MENU_NORMAL_ITEM,
+    );
+    $items['DNA_success'] = array(
+        'title' => 'DNA Success',
+        'page callback' => 'DNA_success',
+        'access callback' => TRUE,
+        'type' => MENU_CALLBACK,
+    );
+    return $items;
+}
+
 function DNA($input) {
     $helix_alpha = str_split(strtoupper($input));
     $helix_beta = array();
@@ -21,4 +39,30 @@ function DNA($input) {
     }
     $result_beta = implode('', $helix_beta);
     return $result_beta;
+}
+
+function DNA_form() {
+    $form['helix_alpha'] = array(
+        '#title' => 'Helix Alpha',
+        '#type' => 'textfield',
+        '#description' => t('Enter the first helix of your DNA'),
+        '#required' => TRUE,
+    );
+    $form['submit'] = array(
+        '#type' => 'submit',
+        "#value" => 'Complete Helix!',
+    );
+    return $form;
+}
+
+function DNA_form_submit($form, &$form_state) {
+    $helix_alpha = $form_state['values']['helix_alpha'];
+    $helix_beta = DNA($helix_alpha);
+    $_SESSION['helix_beta'] = $helix_beta;
+    $form_state['redirect'] = 'DNA_success';
+}
+
+function DNA_success() {
+    $helix_beta = $_SESSION['helix_beta'];
+    return '<p>Your second helix is: ' . $helix_beta . '</p>';
 }
