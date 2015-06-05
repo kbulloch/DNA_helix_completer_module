@@ -10,37 +10,37 @@ class DNATests extends DrupalUnitTestCase {
         );
     }
 
-    function testDNA() {
+    function testDNA_A() {
         $result = DNA('A');
         $should_be = 'T';
         $this->assertEqual($result, $should_be);
     }
 
-    function testDNA() {
+    function testDNA_T() {
         $result = DNA('T');
         $should_be = 'A';
         $this->assertEqual($result, $should_be);
     }
 
-    function testDNA() {
+    function testDNA_g() {
         $result = DNA('g');
         $should_be = 'C';
         $this->assertEqual($result, $should_be);
     }
 
-    function testDNA() {
+    function testDNA_c() {
         $result = DNA('c');
         $should_be = 'G';
         $this->assertEqual($result, $should_be);
     }
 
-    function testDNA() {
+    function testDNA_gattaca() {
         $result = DNA('gattaca');
         $should_be = 'CTAATGT';
         $this->assertEqual($result, $should_be);
     }
 
-    function testDNA() {
+    function testDNA_mixed_caps() {
         $result = DNA('atCG');
         $should_be = 'TAGC';
         $this->assertEqual($result, $should_be);
