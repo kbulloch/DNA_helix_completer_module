@@ -75,6 +75,6 @@ function DNA_form_submit($form, &$form_state) {
 function DNA_success() {
     $helix_alpha = $_SESSION['helix_alpha'];
     $helix_beta = $_SESSION['helix_beta'];
-    return '<p>Helix submitted.: ' . $helix_alpha . '</p>' .
+    return '<p>Helix submitted: ' . $helix_alpha . '</p>' .
         '<p>Helix generated: ' . $helix_beta . '</p>';
 }
