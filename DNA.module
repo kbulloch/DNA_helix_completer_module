@@ -53,7 +53,7 @@ function DNA_form() {
     );
     $form['submit'] = array(
         '#type' => 'submit',
-        "#value" => 'Complete Helix!',
+        '#value' => 'Complete Helix!',
     );
     return $form;
 }
