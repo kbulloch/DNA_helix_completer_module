@@ -46,6 +46,9 @@ function DNA_form() {
         '#title' => 'Helix Alpha',
         '#type' => 'textfield',
         '#description' => t('Enter the first helix of your DNA'),
+        '#element_validate' => array(
+            'element_validate_GATTACA',
+        ),
         '#required' => TRUE,
     );
     $form['submit'] = array(
@@ -53,6 +56,12 @@ function DNA_form() {
         "#value" => 'Complete Helix!',
     );
     return $form;
+}
+
+function element_validate_GATTACA($element) {
+    if(preg_match('/[^atgcATGC]+/', $element['#value'])) {
+        form_error($element, t('Your DNA is made up of only A T G C molecules'));
+    }
 }
 
 function DNA_form_submit($form, &$form_state) {
