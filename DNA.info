@@ -1,0 +1,7 @@
+name = DNA
+description = Gives the second helix of a DNA chain when the user enters the first
+package = Aardvark Modules
+core = 7.x
+files[] = DNA.module
+files[] = DNA.test
+dependencies = simpletest

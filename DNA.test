@@ -1,0 +1,18 @@
+<?php
+
+class DNATests extends DrupalUnitTestCase {
+
+    public static function getInfo() {
+        return array(
+            'name' => 'DNA Test',
+            'description' => 'Test the DNA completer function',
+            'group' => 'Aardvark',
+        );
+    }
+
+    function testDNA() {
+        $result = DNA('A');
+        $second = 'A';
+        $this->assertEqual($result, $second);
+    }
+}
