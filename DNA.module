@@ -67,11 +67,14 @@ function element_validate_GATTACA($element) {
 function DNA_form_submit($form, &$form_state) {
     $helix_alpha = $form_state['values']['helix_alpha'];
     $helix_beta = DNA($helix_alpha);
+    $_SESSION['helix_alpha'] = strtoupper($helix_alpha);
     $_SESSION['helix_beta'] = $helix_beta;
     $form_state['redirect'] = 'DNA_success';
 }
 
 function DNA_success() {
+    $helix_alpha = $_SESSION['helix_alpha'];
     $helix_beta = $_SESSION['helix_beta'];
-    return '<p>Your second helix is: ' . $helix_beta . '</p>';
+    return '<p>Helix submitted.: ' . $helix_alpha . '</p>' .
+        '<p>Helix generated: ' . $helix_beta . '</p>';
 }
