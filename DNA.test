@@ -11,8 +11,8 @@ class DNATests extends DrupalUnitTestCase {
     }
 
     function testDNA() {
-        $result = DNA('A');
-        $second = 'A';
+        $result = DNA('atCG');
+        $second = 'TAGC';
         $this->assertEqual($result, $second);
     }
 }

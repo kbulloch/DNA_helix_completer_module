@@ -1,5 +1,24 @@
 <?php
 
 function DNA($input) {
-    return $input;
+    $helix_alpha = str_split(strtoupper($input));
+    $helix_beta = array();
+    foreach($helix_alpha as $molecule) {
+        switch ($molecule) {
+            case 'A':
+                array_push($helix_beta, 'T');
+                break;
+            case 'T':
+                array_push($helix_beta, 'A');
+                break;
+            case 'C':
+                array_push($helix_beta, 'G');
+                break;
+            case 'G':
+                array_push($helix_beta, 'C');
+                break;
+        }
+    }
+    $result_beta = implode('', $helix_beta);
+    return $result_beta;
 }
