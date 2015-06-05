@@ -6,7 +6,7 @@ class DNATests extends DrupalUnitTestCase {
         return array(
             'name' => 'DNA Test',
             'description' => 'Test the DNA completer function',
-            'group' => 'Aardvark',
+            'group' => 'Aardvark DNA Unit',
         );
     }
 
@@ -15,4 +15,33 @@ class DNATests extends DrupalUnitTestCase {
         $second = 'TAGC';
         $this->assertEqual($result, $second);
     }
+}
+
+class DNAWebTest extends DrupalWebTestCase {
+
+    public static function getInfo() {
+        return array(
+            'name' => 'DNA Test',
+            'description' => 'Test the DNA completer function',
+            'group' => 'Aardvark DNA Web',
+        );
+    }
+
+    //set up the drupal web test
+    public function setUp() {
+        parent::setUp(array('DNA'));
+
+        $info['helix_alpha'] = "gattaca";
+
+        //post a form to the page
+        $this->drupalPost('DNA', $info, t('Complete Helix!'));
+    }
+
+    //test that the form submits correctly
+    public function testDNAFormPost() {
+        $this->drupalGet('DNA_success');
+
+        $this->assertText("CTAATGT", 'The DNA is correct');
+    }
+
 }
